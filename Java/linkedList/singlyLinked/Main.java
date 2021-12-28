@@ -12,9 +12,13 @@ public class Main
 		sLL.addAtIndex(40, 3);
 		sLL.updateAtIndex(100, 3);
 		sLL.deleteLast();
-		sLL.deleteHead();
-		sLL.deleteAtIndex(5);
+//		sLL.deleteHead();
+//		sLL.deleteAtIndex(5);
 		sLL.printAllNodeValues();
 		System.out.println(sLL.size());
+		sLL.reverseRecursive();
+		sLL.printAllNodeValues();
+		sLL.reverseIterative();
+		sLL.printAllNodeValues();
 	}
 }

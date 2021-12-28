@@ -159,4 +159,37 @@ public class SinglyLinkedLinkedList
 		allVals+=temphead.getDataVal();
 		System.out.println(allVals);
 	}
+	public void reverseRecursive()
+	{
+		head=reverseRecursive(head);
+	}
+	private Node reverseRecursive(Node head)
+	{
+		if(head==null||head.getNext()==null)
+		{
+			return head;
+		}
+		Node newHead=reverseRecursive(head.getNext());
+		Node headNext=head.getNext();
+		headNext.setNext(head);
+		head.setNext(null);
+		return newHead;
+	}
+	public void reverseIterative()
+	{
+		head=reverseIterative(head);
+	}
+	private Node reverseIterative(Node head)
+	{
+		Node currNode=head;
+		Node prevNode=null;
+		while(currNode!=null)
+		{
+			Node tempNode=currNode.getNext();
+			currNode.setNext(prevNode);
+			prevNode=currNode;
+			currNode=tempNode;
+		}
+		return prevNode;
+	}
 }

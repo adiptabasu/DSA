@@ -134,6 +134,30 @@ class SinglyLinkedLinkedList {
         }
         return size;
     }
+    reverseIterative() {
+        let currNode = this.head;
+        let prevNode = null;
+        while (currNode != null) {
+            let tempNode = currNode.getNext();
+            currNode.setNext(prevNode);
+            prevNode = currNode;
+            currNode = tempNode;
+        }
+        this.head = prevNode;
+    }
+    reverseRecersive() {
+        this.head = this.recursiveReverseCall(this.head);
+    }
+    recursiveReverseCall(head) {
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+        let newHead = this.recursiveReverseCall(head.getNext());
+        let nextHead = head.getNext();
+        nextHead.setNext(head);
+        head.setNext(null);
+        return newHead;
+    }
     printAllValues() {
         let values = "";
         let tempHead = this.head;
@@ -163,3 +187,7 @@ sLL.deleteLast();
 sLL.deleteAtIndex(1)
 sLL.printAllValues();
 console.log(sLL.size());
+sLL.reverseIterative();
+sLL.printAllValues();
+sLL.reverseRecersive();
+sLL.printAllValues();
