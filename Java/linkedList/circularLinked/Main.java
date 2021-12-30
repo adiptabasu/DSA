@@ -12,5 +12,13 @@ public class Main
 		cLL.addToHead(40);
 		cLL.addToLast(50);
 		cLL.printAllValues();
+		System.out.println(cLL.size());
+		cLL.addAtIndex(100, 5);
+		cLL.printAllValues();
+		System.out.println(cLL.getAtIndex(8));
+		cLL.updateAtIndex(4, 1);
+		cLL.printAllValues();
+		cLL.deleteAtIndex(6);
+		cLL.printAllValues();
 	}
 }
