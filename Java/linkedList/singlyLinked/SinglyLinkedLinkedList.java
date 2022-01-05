@@ -153,7 +153,7 @@ public class SinglyLinkedLinkedList
 		Node temphead=head;
 		while(temphead.getNext()!=null)
 		{
-			allVals+=temphead.getDataVal()+" , ";
+			allVals+=temphead.getDataVal()+" -> ";
 			temphead=temphead.getNext();
 		}
 		allVals+=temphead.getDataVal();
@@ -175,21 +175,53 @@ public class SinglyLinkedLinkedList
 		head.setNext(null);
 		return newHead;
 	}
-	public void reverseIterative()
+	public void reverseLinkedListIterative()
 	{
-		head=reverseIterative(head);
-	}
-	private Node reverseIterative(Node head)
-	{
-		Node currNode=head;
-		Node prevNode=null;
-		while(currNode!=null)
+		if(head==null)
+			return;
+		else
 		{
-			Node tempNode=currNode.getNext();
-			currNode.setNext(prevNode);
-			prevNode=currNode;
-			currNode=tempNode;
+			Node currNode=head;
+			Node prevNode=null;
+			while(currNode!=null)
+			{
+				Node tempNode=currNode.getNext();
+				currNode.setNext(prevNode);
+				prevNode=currNode;
+				currNode=tempNode;
+			}
+			this.head=prevNode;
 		}
-		return prevNode;
 	}
+	public void selectionSort()
+	{
+		if(head==null)
+			return;
+		Node tempHead=head;
+		Node tail=null;
+		while(tempHead!=null)
+		{
+			Node currMax=head;
+			Node tempHeadHead=head;
+			while(tempHeadHead.getNext()!=tail)
+			{
+				if(tempHeadHead.getDataVal()>currMax.getDataVal())
+					currMax=tempHeadHead;
+				tempHeadHead=tempHeadHead.getNext();
+			}
+			tail=tempHeadHead;
+			if(currMax.getDataVal()>tail.getDataVal())
+			{
+				int temp=tail.getDataVal();
+				tail.setDataVal(currMax.getDataVal());
+				currMax.setDataVal(temp);
+			}
+			tempHead=tempHead.getNext();
+		}
+	}
+	@Override
+	public String toString() {
+		return "SinglyLinkedLinkedList [head=" + head + "]";
+	}
+	
 }
